@@ -1,6 +1,6 @@
 ---
 - name: Purge Raspbian preinstalled tools
-  shell: "sudo apt-get -y remove `sudo dpkg --get-selections | grep -v "deinstall" | grep {{ item }} | sed s/install//"
+  shell: "sudo apt-get -y remove `sudo dpkg --get-selections | grep -v \"deinstall\" | grep {{ item }} | sed s/install//"
   with_items:
     - x11
     - python
