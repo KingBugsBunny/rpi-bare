@@ -1,0 +1,21 @@
+---
+- name: Purge Raspbian preinstalled tools
+  shell: "sudo apt-get -y remove `sudo dpkg --get-selections | grep -v "deinstall" | grep {{ item }} | sed s/install//"
+  with_items:
+    - x11
+    - python
+    - sound
+    - gnome
+    - lxde
+    - gtk
+    - desktop
+    - gstreamer
+    - avahi
+    - dbus
+    - freetype
+- name: Remove dependencies
+  apt:
+   autoremove: yes
+- name: Update apt cache
+  apt:
+   update_cache: yes

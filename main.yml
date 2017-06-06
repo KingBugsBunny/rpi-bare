@@ -1,0 +1,9 @@
+---
+- hosts: nodes
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  vars:
+    temp_folder: /tmp
+  tasks:
+    - include: tasks/purge.yml
