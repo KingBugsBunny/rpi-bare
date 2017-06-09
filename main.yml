@@ -7,3 +7,4 @@
     temp_folder: /tmp
   tasks:
     - include: tasks/purge.yml
+    - include: tasks/docker.yml

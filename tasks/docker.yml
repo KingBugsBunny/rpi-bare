@@ -4,13 +4,13 @@
     url: "http://downloads.hypriot.com/docker-hypriot_1.8.2-1_armhf.deb >/tmp/docker-hypriot_1.8.2-1_armhf.deb"
     attributes: "sSL"
     dest: "{{ temp_folder }}/docker-hypriot.deb"
-    state: present
 - name: Docker | Install Hypriot Docker
   apt:
-    deb="{{ temp_folder }}/docker-hypriot.deb"
+    deb: "{{ temp_folder }}/docker-hypriot.deb"
 - name: Docker | Cleanup package
-  path: "{{ temp_folder }}/docker.hypriot.deb"
-  state: absent
+  file:
+    path: "{{ temp_folder }}/docker.hypriot.deb"
+    state: absent
 - name: Docker | modify user
   shell: "sh -c usermod -aG $SUDO_USER"
 - name: Docker | start Docker
